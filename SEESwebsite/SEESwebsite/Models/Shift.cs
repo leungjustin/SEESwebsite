@@ -8,7 +8,7 @@ namespace SEESwebsite.Models
         //OTHER PROPERTIES
         public DateTime ShiftStartTime { get; set; }
         public DateTime ShiftEndTime { get; set; }
-        //public Event Event {get; set;} //Event not yet implemented
-        public Employee Employee {get; set;} //Employee not yet implemented
+        public Event Event {get; set;} 
+        public Employee Employee {get; set;}
     }
 }
