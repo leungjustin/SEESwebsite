@@ -12,6 +12,6 @@ namespace SEESwebsite.Models
         public string State { get; set; }
         public string SSN { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string EmployeeStatis { get; set; }
+        public string EmployeeStatus { get; set; }
     }
 }
