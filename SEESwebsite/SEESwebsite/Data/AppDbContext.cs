@@ -9,6 +9,7 @@ namespace SEESwebsite.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Shift> Shifts { get; set; }
-        public DbSet<Shift> Event { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Venue> Venues { get; set; }
     }
 }
