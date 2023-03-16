@@ -11,5 +11,6 @@ namespace SEESwebsite.Data
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Venue> Venues { get; set; }
+        public DbSet<IncidentReport> IncidentReports { get; set; }
     }
 }
