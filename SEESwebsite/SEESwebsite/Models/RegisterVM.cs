@@ -52,13 +52,15 @@ namespace SEESwebsite.Models
         [StringLength(2)]
         public string State { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage ="Please enter a date of birth")]
-        //[Range(DateTime, )]
+        [Required(ErrorMessage = "Please enter a date of birth that is between 1920 and 2008")]
+        [Range(1920, 2008)] //workers must be at least 14 or 15
+        public DateTime Dob { get; set; }
 
-        //public DateTime GetCurrentMinAge()
-        //{
-            //min age to work in oregon is 14
+        [Required(ErrorMessage = "Please indicate whether the employee is full or part time status")]
+        public bool IsFullTime { get; set; }
 
-        //}
+        [Required(ErrorMessage = "Please indicate if the employee is an admin or not")]
+        public bool IsAdmin { get; set; }
+
     }
 }
