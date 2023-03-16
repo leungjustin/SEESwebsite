@@ -12,12 +12,6 @@ namespace SEESwebsite.Models
         [StringLength(100)]
         public string LastName { get; set; } = string.Empty;
 
-
-        //this code for username, password, and confirm password from Murach book
-        [Required(ErrorMessage = "Please enter a username.")]
-        [StringLength(255)]
-        public string Username { get; set; } = string.Empty;
-
         [Required(ErrorMessage = "Please enter a password.")]
         [DataType(DataType.Password)]
         [Compare("ConfirmPassword")]
@@ -30,6 +24,7 @@ namespace SEESwebsite.Models
         public string ConfirmPassword { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please enter an email address")]
+        [StringLength(320)]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; } = string.Empty;
 
