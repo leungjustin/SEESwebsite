@@ -4,8 +4,9 @@ namespace SEESwebsite.Models
 {
     public class LoginVM
     {
-        [Required(ErrorMessage ="Please enter a username")] //!!! change this to email???
-        [StringLength(255)]
+        [Required(ErrorMessage ="Please enter an email address")]
+        [StringLength(320)]
+        [DataType(DataType.EmailAddress)]
         public string UserName { get; set; } = string.Empty;
 
         [Required(ErrorMessage ="Please enter a password")]
