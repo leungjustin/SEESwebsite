@@ -12,7 +12,7 @@ using SEESwebsite.Data;
 namespace SEESwebsite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230316222351_IdentityTables")]
+    [Migration("20230316223528_IdentityTables")]
     partial class IdentityTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
