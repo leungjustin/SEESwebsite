@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SEESwebsite.Models
 {
     public class Employee : IdentityUser
     {
+        [NotMapped]
         public IList<string> RoleName { get; set; }    
         public string FirstEmployee { get; set; }
         public string LastName { get; set; }

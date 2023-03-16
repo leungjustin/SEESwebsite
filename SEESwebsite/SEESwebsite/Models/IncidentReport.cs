@@ -1,8 +1,11 @@
-﻿namespace SEESwebsite.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SEESwebsite.Models
 {
     public class IncidentReport
     {
-        public int ReportId { get; set; }
+        [Key]
+        public int IncidentReportId { get; set; }
         public Employee Employee { get; set; }
         public DateTime IncidentDate { get; set; }
         public Event Event { get; set; }

@@ -1,9 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace SEESwebsite.Models
 {
     public class Shift
     {
-        //PRIMARY KEY
+        [Key]
         public int ShiftId { get; set; }
         //OTHER PROPERTIES
         public DateTime ShiftStartTime { get; set; }
