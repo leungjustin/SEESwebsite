@@ -5,7 +5,7 @@ namespace SEESwebsite.Models
     public class IncidentReport
     {
         [Key]
-        public int ReportId { get; set; }
+        public int IncidentReportId { get; set; }
         public Employee Employee { get; set; }
         public DateTime IncidentDate { get; set; }
         public Event Event { get; set; }
