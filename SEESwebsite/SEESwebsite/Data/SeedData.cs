@@ -64,7 +64,7 @@ namespace SEESwebsite.Data
                     ReportDetails = "These are the details of the incident report.",
                     WasReviewed = false
                 };
-                context.Shifts.Add(shift);
+                context.IncidentReports.Add(incidentReport);
                 context.SaveChanges();
                 #endregion
             }
