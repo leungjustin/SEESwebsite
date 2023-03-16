@@ -52,12 +52,20 @@ namespace SEESwebsite.Models
         [StringLength(2)]
         public string State { get; set; } = string.Empty;
 
+        
+
+
         //[Required(ErrorMessage ="Please enter a date of birth")]
         //[Range(DateTime, )]
+        //public DateTime Dob {get; set}
+
 
         //public DateTime GetCurrentMinAge()
         //{
             //min age to work in oregon is 14
+            //get the current year in DateTime format
+            //DateTime currYear = DateTime.Now;
+
 
         //}
     }
