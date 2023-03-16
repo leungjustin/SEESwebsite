@@ -56,15 +56,15 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ShiftId,ShiftStartTime,ShiftEndTime")] Shift shift)
+        public async Task<IActionResult> Create([Bind("ShiftId,ShiftStartTime,ShiftEndTime,Event,Employee")] Shift shift)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(shift);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(shift);
+            //}
+            //return View(shift);
         }
 
         // GET: Shifts/Edit/5
