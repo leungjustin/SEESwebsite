@@ -7,7 +7,7 @@ namespace SEESwebsite.Models
         [Required(ErrorMessage ="Please enter an email address")]
         [StringLength(320)]
         [DataType(DataType.EmailAddress)]
-        public string UserName { get; set; } = string.Empty;
+        public string EmailAddress { get; set; } = string.Empty;
 
         [Required(ErrorMessage ="Please enter a password")]
         [StringLength (255)]
