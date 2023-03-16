@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SEESwebsite.Data;
 using SEESwebsite.Models;
 
-namespace SEESwebsite
+namespace SEESwebsite.Controllers
 {
     public class ShiftsController : Controller
     {
@@ -22,9 +22,9 @@ namespace SEESwebsite
         // GET: Shifts
         public async Task<IActionResult> Index()
         {
-              return _context.Shifts != null ? 
-                          View(await _context.Shifts.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Shifts'  is null.");
+            return _context.Shifts != null ?
+                        View(await _context.Shifts.ToListAsync()) :
+                        Problem("Entity set 'AppDbContext.Shifts'  is null.");
         }
 
         // GET: Shifts/Details/5
@@ -150,14 +150,14 @@ namespace SEESwebsite
             {
                 _context.Shifts.Remove(shift);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ShiftExists(int id)
         {
-          return (_context.Shifts?.Any(e => e.ShiftId == id)).GetValueOrDefault();
+            return (_context.Shifts?.Any(e => e.ShiftId == id)).GetValueOrDefault();
         }
     }
 }
