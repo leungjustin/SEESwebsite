@@ -53,6 +53,20 @@ namespace SEESwebsite.Data
                 context.Shifts.Add(shift);
                 context.SaveChanges();
                 #endregion
+
+                #region incident report seed data
+                IncidentReport incidentReport = new IncidentReport
+                {
+                    Employee = employee,
+                    IncidentDate = DateTime.Now,
+                    Event = securityEvent,
+                    Subject = "This is a subject line",
+                    ReportDetails = "These are the details of the incident report.",
+                    WasReviewed = false
+                };
+                context.Shifts.Add(shift);
+                context.SaveChanges();
+                #endregion
             }
         }
     }
