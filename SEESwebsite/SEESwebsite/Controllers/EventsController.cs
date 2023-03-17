@@ -23,7 +23,7 @@ namespace SEESwebsite.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Events != null ? 
-                          View(await _context.Events.ToListAsync()) :
+                          View(await _context.Events.Include(e => e.Venue).ToListAsync()) :
                           Problem("Entity set 'AppDbContext.Events'  is null.");
         }
 
@@ -35,7 +35,7 @@ namespace SEESwebsite.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
+            var @event = await _context.Events.Include(e => e.Venue)
                 .FirstOrDefaultAsync(m => m.EventId == id);
             if (@event == null)
             {
@@ -56,10 +56,29 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId,EventName,EventStartDate,EventEndDate,EventNotes")] Event @event)
+        public async Task<IActionResult> Create(Event @event, string VenueName, string Address, string City, string State, string ZipCode)
         {
-            if (ModelState.IsValid)
+            Venue venue = new Venue();
+            var result = await _context.Venues.FirstOrDefaultAsync(v => v.VenueName == VenueName);
+            if (result != null)
             {
+                venue = result;
+            }
+            else
+            {                
+                venue.VenueName = VenueName;
+                venue.Address = Address;
+                venue.City = City;
+                venue.State = State;
+                venue.ZipCode = ZipCode;
+
+                _context.Add(venue);
+                await _context.SaveChangesAsync();
+            }
+
+            @event.Venue = venue;
+            if (ModelState.IsValid)
+            {                
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -75,7 +94,7 @@ namespace SEESwebsite.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events.FindAsync(id);
+            var @event = await _context.Events.Include(e => e.Venue).FirstOrDefaultAsync(i => i.EventId == id);
             if (@event == null)
             {
                 return NotFound();
@@ -126,7 +145,7 @@ namespace SEESwebsite.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
+            var @event = await _context.Events.Include(e => e.Venue)
                 .FirstOrDefaultAsync(m => m.EventId == id);
             if (@event == null)
             {
