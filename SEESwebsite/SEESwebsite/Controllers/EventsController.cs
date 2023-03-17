@@ -99,7 +99,7 @@ namespace SEESwebsite.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events.Include(e => e.Venue).FirstOrDefaultAsync(i => i.EventId == id);
+            var @event = await _context.Events.Include(e => e.Venue).FirstOrDefaultAsync(i => i.EventId == id);           
             if (@event == null)
             {
                 return NotFound();
@@ -112,11 +112,23 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventStartDate,EventEndDate,EventNotes")] Event @event)
+        public async Task<IActionResult> Edit(int id, Event @event)
         {
             if (id != @event.EventId)
             {
                 return NotFound();
+            }
+
+            var result = await _context.Venues.FirstOrDefaultAsync(v => v.VenueName == @event.Venue.VenueName);
+
+            if (result != null)
+            {
+                @event.Venue = result;                
+
+                ModelState.Remove("Venue.Address");
+                ModelState.Remove("Venue.City");
+                ModelState.Remove("Venue.State");
+                ModelState.Remove("Venue.ZipCode");
             }
 
             if (ModelState.IsValid)
