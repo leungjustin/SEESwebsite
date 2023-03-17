@@ -7,7 +7,7 @@
 
 ~~Create an ASP.NET MVC web app project in Visual Studio - DONE~~
 
-Enable Identity in the project configuration, before you create the project, so that it automaically creates Identity user registration and login pages for you as well as adding a DbContext class and code for a database. - WIP
+~~Enable Identity in the project configuration, before you create the project, so that it automaically creates Identity user registration and login pages for you as well as adding a DbContext class and code for a database. - DONE~~
 
 ~~Put the new project in your Git repository - DONE~~
 
@@ -18,7 +18,5 @@ Create scaffolding to test key model classes. - WIP
 For model classes that contain objects or collections of objects, add all the code you need to handle the related data (include statements when loading an object, foreign keys on model classes, etc.) - WIP
 
 ### Notes:
-
-Identity - needs login, register, user management views
 
 Scaffolding - needs to be created (and edited to support cascade delete?)
