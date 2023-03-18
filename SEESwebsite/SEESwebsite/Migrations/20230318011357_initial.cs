@@ -57,40 +57,6 @@ namespace SEESwebsite.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IncidentReports",
-                columns: table => new
-                {
-                    IncidentReportId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IncidentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EventId = table.Column<int>(type: "int", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReportDetails = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WasReviewed = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IncidentReports", x => x.IncidentReportId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Shifts",
-                columns: table => new
-                {
-                    ShiftId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ShiftStartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ShiftEndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EventId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Shifts", x => x.ShiftId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Venues",
                 columns: table => new
                 {
@@ -236,6 +202,52 @@ namespace SEESwebsite.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "IncidentReports",
+                columns: table => new
+                {
+                    IncidentReportId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IncidentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventId = table.Column<int>(type: "int", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportDetails = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WasReviewed = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IncidentReports", x => x.IncidentReportId);
+                    table.ForeignKey(
+                        name: "FK_IncidentReports_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Shifts",
+                columns: table => new
+                {
+                    ShiftId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ShiftStartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ShiftEndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Shifts", x => x.ShiftId);
+                    table.ForeignKey(
+                        name: "FK_Shifts_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -279,6 +291,16 @@ namespace SEESwebsite.Migrations
                 name: "IX_Events_VenueId",
                 table: "Events",
                 column: "VenueId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IncidentReports_EventId",
+                table: "IncidentReports",
+                column: "EventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Shifts_EventId",
+                table: "Shifts",
+                column: "EventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -299,9 +321,6 @@ namespace SEESwebsite.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Events");
-
-            migrationBuilder.DropTable(
                 name: "IncidentReports");
 
             migrationBuilder.DropTable(
@@ -312,6 +331,9 @@ namespace SEESwebsite.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "Venues");

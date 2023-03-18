@@ -12,7 +12,7 @@ using SEESwebsite.Data;
 namespace SEESwebsite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230318004713_initial")]
+    [Migration("20230318011357_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -309,6 +309,8 @@ namespace SEESwebsite.Migrations
 
                     b.HasKey("IncidentReportId");
 
+                    b.HasIndex("EventId");
+
                     b.ToTable("IncidentReports");
                 });
 
@@ -334,6 +336,8 @@ namespace SEESwebsite.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ShiftId");
+
+                    b.HasIndex("EventId");
 
                     b.ToTable("Shifts");
                 });
@@ -431,6 +435,31 @@ namespace SEESwebsite.Migrations
                         .IsRequired();
 
                     b.Navigation("Venue");
+                });
+
+            modelBuilder.Entity("SEESwebsite.Models.IncidentReport", b =>
+                {
+                    b.HasOne("SEESwebsite.Models.Event", null)
+                        .WithMany("IncidentReports")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SEESwebsite.Models.Shift", b =>
+                {
+                    b.HasOne("SEESwebsite.Models.Event", null)
+                        .WithMany("Shifts")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SEESwebsite.Models.Event", b =>
+                {
+                    b.Navigation("IncidentReports");
+
+                    b.Navigation("Shifts");
                 });
 #pragma warning restore 612, 618
         }
