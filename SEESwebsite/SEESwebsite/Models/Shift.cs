@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SEESwebsite.Models
 {
@@ -10,7 +11,8 @@ namespace SEESwebsite.Models
         //OTHER PROPERTIES
         public DateTime ShiftStartTime { get; set; }
         public DateTime ShiftEndTime { get; set; }
-        public Event Event {get; set;} 
-        public Employee Employee {get; set;}
+        public int EventId {get; set;}
+        [ForeignKey("Employee")]
+        public string EmployeeId {get; set;}
     }
 }
