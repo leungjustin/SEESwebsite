@@ -22,9 +22,9 @@ namespace SEESwebsite.Controllers
         // GET: Shifts
         public async Task<IActionResult> Index()
         {
-            return _context.Shifts != null ?
-                        View(await _context.Shifts.ToListAsync()) :
-                        Problem("Entity set 'AppDbContext.Shifts'  is null.");
+              return _context.Shifts != null ? 
+                          View(await _context.Shifts.ToListAsync()) :
+                          Problem("Entity set 'AppDbContext.Shifts'  is null.");
         }
 
         // GET: Shifts/Details/5
@@ -56,7 +56,7 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ShiftId,ShiftStartTime,ShiftEndTime")] Shift shift)
+        public async Task<IActionResult> Create([Bind("ShiftId,ShiftStartTime,ShiftEndTime,EventId,EmployeeId")] Shift shift)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ShiftId,ShiftStartTime,ShiftEndTime")] Shift shift)
+        public async Task<IActionResult> Edit(int id, [Bind("ShiftId,ShiftStartTime,ShiftEndTime,EventId,EmployeeId")] Shift shift)
         {
             if (id != shift.ShiftId)
             {
@@ -150,14 +150,14 @@ namespace SEESwebsite.Controllers
             {
                 _context.Shifts.Remove(shift);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ShiftExists(int id)
         {
-            return (_context.Shifts?.Any(e => e.ShiftId == id)).GetValueOrDefault();
+          return (_context.Shifts?.Any(e => e.ShiftId == id)).GetValueOrDefault();
         }
     }
 }
