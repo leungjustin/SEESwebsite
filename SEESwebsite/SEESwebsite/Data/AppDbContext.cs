@@ -4,7 +4,7 @@ using SEESwebsite.Models;
 
 namespace SEESwebsite.Data
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<Employee>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

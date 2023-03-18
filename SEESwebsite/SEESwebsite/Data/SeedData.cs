@@ -11,8 +11,8 @@ namespace SEESwebsite.Data
             {
                 #region employee seed data
                 var userManager = services.GetRequiredService<UserManager<Employee>>();
-                const string SEED_PASSWORD = "password";
-                Employee employee = new Employee { Email = "employee-se1@sees.com" };
+                const string SEED_PASSWORD = "Password!1";
+                Employee employee = new Employee { Email = "employee-se1@sees.com", UserName = "employee-se1@sees.com" };
                 var result = userManager.CreateAsync(employee, SEED_PASSWORD).Result;
                 #endregion
 

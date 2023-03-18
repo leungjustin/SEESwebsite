@@ -58,6 +58,8 @@ namespace SEESwebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ShiftId,ShiftStartTime,ShiftEndTime,EventId,EmployeeId")] Shift shift)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+
             if (ModelState.IsValid)
             {
                 _context.Add(shift);
