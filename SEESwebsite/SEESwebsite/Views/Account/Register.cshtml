@@ -1,0 +1,114 @@
+﻿@model RegisterVM
+@{
+    ViewBag.Title = "Register";
+}
+<h2>Register</h2>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post" asp-action="Register">
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">First Name:</label> <div class="col-md-4">
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Last Name:</label> <div class="col-md-4">
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Email Address:</label> <div class="col-md-4">
+            <input asp-for="EmailAddress" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Password:</label> <div class="col-md-4">
+            <input type="password" asp-for="Password" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Confirm Password:</label> <div class="col-md-4">
+            <input type="password" asp-for="ConfirmPassword" class="form-control" />
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Phone Number:</label> <div class="col-md-4">
+            <input asp-for="PhoneNumber" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Address Line 1:</label> <div class="col-md-4">
+            <input asp-for="AddressLine1" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="AddressLine1" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Address Line 2:</label> <div class="col-md-4">
+            <input asp-for="AddressLine2" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="AddressLine2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">City:</label> <div class="col-md-4">
+            <input asp-for="City" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">State:</label> <div class="col-md-4">
+            <input asp-for="State" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-form-label col-md-2">Date of Birth:</label> <div class="col-md-4">
+            <input asp-for="Dob" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Dob" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-form-label col-sm-1">Full Time:</label> <div class="">
+            <input type="checkbox" asp-for="IsFullTime" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="IsFullTime" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row col-sm-1">
+        <label class="col-form-label">Admin:</label> <div class="col-sm-1">
+            <input type="checkbox" asp-for="IsAdmin" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="IsAdmin" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col offset-md-2">
+            <button type="submit" class="btn btn-primary">Register</button> <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Cancel</a>
+        </div>
+    </div> <div class="row"> <div class="col offset-md-2"> Already registered? <a asp-action="LogIn">Log In</a> </div> </div>
+</form> 
