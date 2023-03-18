@@ -11,8 +11,8 @@ namespace SEESwebsite.Data
             {
                 #region employee seed data
                 var userManager = services.GetRequiredService<UserManager<Employee>>();
-                const string SEED_PASSWORD = "password";
-                Employee employee = new Employee { Email = "employee-se1@sees.com" };
+                const string SEED_PASSWORD = "Password!1";
+                Employee employee = new Employee { Email = "employee-se1@sees.com", UserName = "employee-se1@sees.com" };
                 var result = userManager.CreateAsync(employee, SEED_PASSWORD).Result;
                 #endregion
 
@@ -47,8 +47,8 @@ namespace SEESwebsite.Data
                 {
                     ShiftStartTime = DateTime.Now,
                     ShiftEndTime = DateTime.Now,
-                    Event = securityEvent,
-                    Employee = employee
+                    EventId = securityEvent.EventId,
+                    EmployeeId = employee.Id
                 };
                 context.Shifts.Add(shift);
                 context.SaveChanges();
@@ -57,9 +57,9 @@ namespace SEESwebsite.Data
                 #region incident report seed data
                 IncidentReport incidentReport = new IncidentReport
                 {
-                    Employee = employee,
+                    EmployeeId = employee.Id,
                     IncidentDate = DateTime.Now,
-                    Event = securityEvent,
+                    EventId = securityEvent.EventId,
                     Subject = "This is a subject line",
                     ReportDetails = "These are the details of the incident report.",
                     WasReviewed = false

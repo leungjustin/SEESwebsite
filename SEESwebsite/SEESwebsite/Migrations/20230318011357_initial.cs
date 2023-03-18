@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SEESwebsite.Migrations
 {
-    public partial class IRscaffold : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,6 @@ namespace SEESwebsite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstEmployee = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -209,7 +208,7 @@ namespace SEESwebsite.Migrations
                 {
                     IncidentReportId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IncidentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EventId = table.Column<int>(type: "int", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -219,12 +218,6 @@ namespace SEESwebsite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IncidentReports", x => x.IncidentReportId);
-                    table.ForeignKey(
-                        name: "FK_IncidentReports_AspNetUsers_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_IncidentReports_Events_EventId",
                         column: x => x.EventId,
@@ -242,17 +235,11 @@ namespace SEESwebsite.Migrations
                     ShiftStartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShiftEndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EventId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shifts", x => x.ShiftId);
-                    table.ForeignKey(
-                        name: "FK_Shifts_AspNetUsers_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Shifts_Events_EventId",
                         column: x => x.EventId,
@@ -306,19 +293,9 @@ namespace SEESwebsite.Migrations
                 column: "VenueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IncidentReports_EmployeeId",
-                table: "IncidentReports",
-                column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_IncidentReports_EventId",
                 table: "IncidentReports",
                 column: "EventId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Shifts_EmployeeId",
-                table: "Shifts",
-                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Shifts_EventId",

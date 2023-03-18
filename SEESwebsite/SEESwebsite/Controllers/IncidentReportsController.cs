@@ -56,7 +56,7 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IncidentReportId,IncidentDate,Subject,ReportDetails,WasReviewed")] IncidentReport incidentReport)
+        public async Task<IActionResult> Create([Bind("IncidentReportId,EmployeeId,IncidentDate,EventId,Subject,ReportDetails,WasReviewed")] IncidentReport incidentReport)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace SEESwebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IncidentReportId,IncidentDate,Subject,ReportDetails,WasReviewed")] IncidentReport incidentReport)
+        public async Task<IActionResult> Edit(int id, [Bind("IncidentReportId,EmployeeId,IncidentDate,EventId,Subject,ReportDetails,WasReviewed")] IncidentReport incidentReport)
         {
             if (id != incidentReport.IncidentReportId)
             {

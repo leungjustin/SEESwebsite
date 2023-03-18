@@ -13,10 +13,9 @@
 
 ~~Code the C# classes for the domain model. - DONE~~
 
-Create scaffolding to test key model classes. - WIP
+~~Create scaffolding to test key model classes. - DONE~~
 
-For model classes that contain objects or collections of objects, add all the code you need to handle the related data (include statements when loading an object, foreign keys on model classes, etc.) - WIP
+~~For model classes that contain objects or collections of objects, add all the code you need to handle the related data (include statements when loading an object, foreign keys on model classes, etc.) - DONE~~
 
 ### Notes:
 
-Scaffolding - needs to be created (and edited to support cascade delete?)
