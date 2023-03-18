@@ -48,7 +48,7 @@ namespace SEESwebsite.Models
         public string State { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please enter a date of birth that is between 1920 and 2008")]
-        [Range(1920, 2008)] //workers must be at least 14 or 15
+        //[Range(1920, 2008)] //workers must be at least 14 or 15
         public DateTime Dob { get; set; }
 
         [Required(ErrorMessage = "Please indicate whether the employee is full or part time status")]
